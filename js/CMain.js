@@ -128,9 +128,9 @@ function CMain(oData) {
         s_oSpriteLibrary.addSprite("but_play", "./sprites/but_play.png");
         s_oSpriteLibrary.addSprite("logo_menu", "./sprites/logo_menu.png");
 
-        s_oSpriteLibrary.addSprite("bg_game", "./sprites/bg_game.jpg");
+        s_oSpriteLibrary.addSprite("bg_game", "./sprites/bg_game-1.jpg");
         s_oSpriteLibrary.addSprite("but_exit", "./sprites/but_exit.png");
-        s_oSpriteLibrary.addSprite("bg_menu", "./sprites/bg_menu.jpg");
+        s_oSpriteLibrary.addSprite("bg_menu", "./sprites/bg_menu-1.jpg");
         s_oSpriteLibrary.addSprite("audio_icon", "./sprites/audio_icon.png");
         s_oSpriteLibrary.addSprite("logo_ctl", "./sprites/logo_ctl.png");
         s_oSpriteLibrary.addSprite("but_credits", "./sprites/but_credits.png");
@@ -153,7 +153,7 @@ function CMain(oData) {
         s_oSpriteLibrary.addSprite('but_yes', './sprites/but_yes.png');
         s_oSpriteLibrary.addSprite('but_no', './sprites/but_no.png');
 
-        s_oSpriteLibrary.addSprite("vs_man_panel", "./sprites/vs_man_panel.png");
+        s_oSpriteLibrary.addSprite("vs_man_panel", "./sprites/vs_man_panel-5.png");
         s_oSpriteLibrary.addSprite("vs_pc_panel", "./sprites/vs_pc_panel.png");
 
         s_oSpriteLibrary.addSprite("but_text", "./sprites/but_text.png");

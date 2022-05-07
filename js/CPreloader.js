@@ -12,7 +12,7 @@ function CPreloader() {
         s_oSpriteLibrary.init(this._onImagesLoaded, this._onAllImagesLoaded, this);
         s_oSpriteLibrary.addSprite("progress_bar", "./sprites/progress_bar.png");
         s_oSpriteLibrary.addSprite("mask_progress_bar", "./sprites/mask_progress_bar.png");
-        s_oSpriteLibrary.addSprite("200x200", "./sprites/200x200.jpg");
+        s_oSpriteLibrary.addSprite("200x200", "./sprites/200x200.png");
         s_oSpriteLibrary.loadSprites();
 
         _oContainer = new createjs.Container();

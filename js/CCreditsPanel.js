@@ -50,19 +50,19 @@ function CCreditsPanel() {
         var oRect = _oMsgText.getBounds();
         _oMsgText.cache(oRect.x, oRect.y, oRect.width, oRect.height);
 
-        oSprite = s_oSpriteLibrary.getSprite('logo_ctl');
-        _oButLogo = createBitmap(oSprite);
-        _oButLogo.regX = oSprite.width / 2;
-        _oButLogo.regY = oSprite.height / 2;
-        _oButLogo.x = CANVAS_WIDTH / 2;
-        _oButLogo.y = CANVAS_HEIGHT / 2;
-        _oContainer.addChild(_oButLogo);
+        // oSprite = s_oSpriteLibrary.getSprite('logo_ctl');
+        // _oButLogo = createBitmap(oSprite);
+        // _oButLogo.regX = oSprite.width / 2;
+        // _oButLogo.regY = oSprite.height / 2;
+        // _oButLogo.x = CANVAS_WIDTH / 2;
+        // _oButLogo.y = CANVAS_HEIGHT / 2;
+        // _oContainer.addChild(_oButLogo);
 
-        _oLink = new createjs.Text("www.codethislab.com", "28px " + FONT_GAME, "#fff");
+        _oLink = new createjs.Text("SuperSmart", "70px " + FONT_GAME, "#fff");
         _oLink.textAlign = "center";
         _oLink.textBaseline = "alphabetic";
         _oLink.x = CANVAS_WIDTH / 2;
-        _oLink.y = 620;
+        _oLink.y = 570;
         _oContainer.addChild(_oLink);
 
         var oRect = _oLink.getBounds();
@@ -79,7 +79,7 @@ function CCreditsPanel() {
     };
 
     this._onLogoButRelease = function () {
-        window.open("http://www.codethislab.com/index.php?&l=en", "_blank");
+        // window.open("http://www.codethislab.com/index.php?&l=en", "_blank");
     };
 
     this._init();

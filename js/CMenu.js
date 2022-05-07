@@ -8,7 +8,7 @@ function CMenu() {
 
     var _oBg;
     var _oLogo;
-    var _oButPlaySingle;
+    // var _oButPlaySingle;
     var _oButPlayTwo;
     var _oAudioToggle;
     var _oButCredits;
@@ -23,10 +23,10 @@ function CMenu() {
         s_oStage.addChild(_oBg);
 
         _pStartPosButSingle = { x: CANVAS_WIDTH / 2 - 250, y: CANVAS_HEIGHT - 170 };
-        _oButPlaySingle = new CGfxButton(_pStartPosButSingle.x, _pStartPosButSingle.y, s_oSpriteLibrary.getSprite('vs_pc_panel'), s_oStage);
-        _oButPlaySingle.addEventListener(ON_MOUSE_UP, this._onButPlaySingle, this);
+        // _oButPlaySingle = new CGfxButton(_pStartPosButSingle.x, _pStartPosButSingle.y, s_oSpriteLibrary.getSprite('vs_pc_panel'), s_oStage);
+        // _oButPlaySingle.addEventListener(ON_MOUSE_UP, this._onButPlaySingle, this);
 
-        _pStartPosButTwo = { x: (CANVAS_WIDTH / 2) + 250, y: CANVAS_HEIGHT - 170 };
+        _pStartPosButTwo = { x: (CANVAS_WIDTH / 2), y: CANVAS_HEIGHT - 170 };
         _oButPlayTwo = new CGfxButton(_pStartPosButTwo.x, _pStartPosButTwo.y, s_oSpriteLibrary.getSprite('vs_man_panel'), s_oStage);
         _oButPlayTwo.addEventListener(ON_MOUSE_UP, this._onButPlayTwo, this);
 
@@ -110,7 +110,7 @@ function CMenu() {
     };
 
     this.unload = function () {
-        _oButPlaySingle.unload();
+        // _oButPlaySingle.unload();
         _oButCredits.unload();
         _oButPlayTwo.unload();
 
@@ -123,7 +123,7 @@ function CMenu() {
             _oButFullscreen.unload();
         }
 
-        _oButLang.unload();
+        // _oButLang.unload();
         _oFade.removeAllEventListeners();
         s_oStage.removeAllChildren();
         s_oMenu = null;
@@ -138,7 +138,7 @@ function CMenu() {
         }
         _oButCredits.setPosition(_pStartPosCredits.x + s_iOffsetX, _pStartPosCredits.y + s_iOffsetY);
 
-        _oButPlaySingle.setPosition(_pStartPosButSingle.x, _pStartPosButSingle.y - s_iOffsetY);
+        // _oButPlaySingle.setPosition(_pStartPosButSingle.x, _pStartPosButSingle.y - s_iOffsetY);
         _oButPlayTwo.setPosition(_pStartPosButTwo.x, _pStartPosButTwo.y - s_iOffsetY);
 
         _oLogo.scaleX = _oLogo.scaleY = linearFunction(
@@ -172,8 +172,8 @@ function CMenu() {
     };
 
     this._onChangeLang = function (iLang) {
-        s_iCurLang = iLang;
-        refreshLanguage();
+        // s_iCurLang = iLang;
+        // refreshLanguage();
     };
 
     this._onButCreditsRelease = function () {
