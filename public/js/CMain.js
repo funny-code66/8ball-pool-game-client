@@ -215,6 +215,7 @@ function CMain(oData) {
     };
 
     this._allResourcesLoaded = function () {
+        window.dragon.resourceLoaded();
         _oPreloader.unload();
 
         try {

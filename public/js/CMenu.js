@@ -30,20 +30,7 @@ function CMenu() {
         _oButPlayTwo = new CGfxButton(_pStartPosButTwo.x, _pStartPosButTwo.y, s_oSpriteLibrary.getSprite('vs_man_panel'), s_oStage);
         _oButPlayTwo.addEventListener(ON_MOUSE_UP, this._onButPlayTwo, this);
 
-        var oSpriteLang = s_oSpriteLibrary.getSprite("but_lang");
-
-        if (DISABLE_SOUND_MOBILE === false || s_bMobile === false) {
-            var oSprite = s_oSpriteLibrary.getSprite('audio_icon');
-            _pStartPosAudio = { x: CANVAS_WIDTH - (oSprite.height / 2) - 10, y: (oSprite.height / 2) + 10 };
-            _oAudioToggle = new CToggle(_pStartPosAudio.x, _pStartPosAudio.y, oSprite, s_bAudioActive, s_oStage);
-            _oAudioToggle.addEventListener(ON_MOUSE_UP, this._onAudioToggle, this);
-            _pStartPosLang = { x: _pStartPosAudio.x - (oSpriteLang.width / NUM_LANGUAGES) - 10, y: _pStartPosAudio.y };
-        } else {
-            _pStartPosLang = { x: CANVAS_WIDTH - (oSprite.width / 4) - 10, y: (oSprite.height / 2) + 10 };
-        }
-
-        _oButLang = new CButLang(_pStartPosLang.x, _pStartPosLang.y, NUM_LANGUAGES, s_iCurLang, oSpriteLang, s_oStage);
-        _oButLang.addEventListener(ON_SELECT_LANG, this._onChangeLang, this);
+        
 
         var oSprite = s_oSpriteLibrary.getSprite('but_credits');
         _pStartPosCredits = { x: (oSprite.width / 2) + 10, y: (oSprite.height / 2) + 10 };
@@ -66,6 +53,21 @@ function CMenu() {
             _oButFullscreen = new CToggle(_pStartPosFullscreen.x, _pStartPosFullscreen.y, oSprite, s_bFullscreen, s_oStage);
             _oButFullscreen.addEventListener(ON_MOUSE_UP, this._onFullscreenRelease, this);
         }
+
+        var oSpriteLang = s_oSpriteLibrary.getSprite("but_lang");
+
+        if (DISABLE_SOUND_MOBILE === false || s_bMobile === false) {
+            _pStartPosLang = { x: _pStartPosFullscreen.x + (oSpriteLang.width / NUM_LANGUAGES) + 10, y: _pStartPosFullscreen.y };
+            var oSprite = s_oSpriteLibrary.getSprite('audio_icon');
+            _pStartPosAudio = { x: _pStartPosLang.x + (oSprite.width / 2) + 10, y: _pStartPosLang.y };
+            _oAudioToggle = new CToggle(_pStartPosAudio.x, _pStartPosAudio.y, oSprite, s_bAudioActive, s_oStage);
+            _oAudioToggle.addEventListener(ON_MOUSE_UP, this._onAudioToggle, this);
+        } else {
+            _pStartPosLang = { x: CANVAS_WIDTH - (oSprite.width / 4) - 10, y: (oSprite.height / 2) + 10 };
+        }
+
+        _oButLang = new CButLang(_pStartPosLang.x, _pStartPosLang.y, NUM_LANGUAGES, s_iCurLang, oSpriteLang, s_oStage);
+        _oButLang.addEventListener(ON_SELECT_LANG, this._onChangeLang, this);
 
         var oSpriteLogo = s_oSpriteLibrary.getSprite("logo_menu");
         _oLogo = createBitmap(oSpriteLogo);
@@ -153,7 +155,6 @@ function CMenu() {
         s_iPlayerMode = GAME_MODE_CPU;
         s_iGameMode = GAME_MODE_EIGHT;
 
-
         this._onExit(function () {
             s_oMenu.unload();
             s_oMain.gotoDifficultyMenu();
@@ -161,8 +162,14 @@ function CMenu() {
     };
 
     this._onButPlayTwo = function () {
+        if(!window.dragon.walletConnected) {
+            alert("Please connect wallet.")
+            return
+        }
         s_iPlayerMode = GAME_MODE_TWO;
         s_iGameMode = GAME_MODE_EIGHT;
+
+        window.dragon.isPlaying(true)
 
         this._onExit(function () {
             s_oMenu.unload();
