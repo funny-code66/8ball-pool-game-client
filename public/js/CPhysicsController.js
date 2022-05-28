@@ -288,14 +288,15 @@ function CPhysicsController(oDebugContainer) {
 
 	//detect if a ball collides with any hole
 	this.collideBallWithHoles = function (oBall, aHoles) {
-		if (distance(oBall.getPos(), aHoles[0]) < (BALL_RADIUS)) {
+		// if (distance(oBall.getPos(), aHoles[0]) < (BALL_RADIUS)) {
+		if (distance(oBall.getPos(), aHoles[0]) < 36) {
 			if (_aCbCompleted[ON_BALL_INTO_HOLE]) {
 				_aCbCompleted[ON_BALL_INTO_HOLE].call(_aCbOwner[ON_BALL_INTO_HOLE], oBall);
 			}
 			return aHoles[0];
 		}
 
-		if (distance(oBall.getPos(), aHoles[1]) < (BALL_RADIUS)) {
+		if (distance(oBall.getPos(), aHoles[1]) < 36) {
 			if (_aCbCompleted[ON_BALL_INTO_HOLE]) {
 				_aCbCompleted[ON_BALL_INTO_HOLE].call(_aCbOwner[ON_BALL_INTO_HOLE], oBall);
 			}
@@ -654,6 +655,9 @@ function CPhysicsController(oDebugContainer) {
 			oBall.addCurForce(oBall.getTmpForce());
 			oBall.setTmpForce(0, 0);
 			oBall.setPrevPos(oBall.getPos());
+
+			//console.log("pos" + i + " x=", oBall.getX())
+			//console.log("pos" + i + " y=", oBall.getY())
 
 			if (oBall.isBallOnTable()) {
 				var aHolesTest, aEdgesTest, aPointsNormalsTest;

@@ -153,7 +153,7 @@ function CTable(oParentContainer, oCpuDifficultyParams) {
 
 		if (DEBUG_SHOW_HOLE_CENTER_POS_SHAPE) {
 			for (var i = 0; i < HOLE_CENTER_POS.length; i++) {
-				var oCircle = createGraphicCircle(HOLE_CENTER_POS[i], BALL_RADIUS, null, "#fff");
+				var oCircle = createGraphicCircle(HOLE_CENTER_POS[i], 36, null, "#fff");
 				_oContainer.addChild(oCircle);
 			}
 		}

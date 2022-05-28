@@ -1,4 +1,6 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux'
+
 import { useConnection, useWallet, useAnchorWallet } from "@solana/wallet-adapter-react";
 import {
   WalletMultiButton,
@@ -9,24 +11,25 @@ import 'swiper/swiper.min.css'
 
 import './index.css';
 
-function HomePage() {
+import CreateRoom from "../../components/CreateRoom";
+import JoinRoom from "../../components/JoinRoom";
+import CreateRoomForm from "../../components/CreateRoomForm";
+
+const Main = () => {
+  const common = useSelector(state => state.common)
+
   const walletState = useWallet();
 
   const [isResourceLoaded, setIsResourceLoaded] = useState(false)
-  const [isConnected, setIsConnected] = useState(false)
+  const [isShow, setIsShow] = useState(false)
 
-  // window.dragon = {
-  //   resourceLoaded: function () {
-  //     setIsResourceLoaded(true)
-  //   }
-  // }
 
   window.dragon.resourceLoaded = function() {
     setIsResourceLoaded(true)
   }
 
   window.dragon.isPlaying = function(state) {
-    setIsConnected(state)
+    setIsShow(state)
   }
   
   useEffect(() => {
@@ -37,15 +40,18 @@ function HomePage() {
   }, [walletState])
 
   return (
-    <div className={isResourceLoaded ? `main show` : `main hide`}>
-      <div className="container">
+    <>
+      {/* {common.page === 'home' && <Home />} */}
+      {/* <CreateRoomForm /> */}
+      <div className={isResourceLoaded ? `main show` : `main hide`}>
+        <div className="container">
         {
-          !isConnected && <WalletMultiButton className='wallet-btn' />
+          !isShow && <WalletMultiButton className='wallet-btn' />
         }
-        
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
-export default HomePage;
+export default Main

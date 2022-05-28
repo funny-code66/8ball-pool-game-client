@@ -127,10 +127,12 @@ function CMain(oData) {
 
         s_oSpriteLibrary.addSprite("but_play", "./sprites/but_play.png");
         s_oSpriteLibrary.addSprite("logo_menu", "./sprites/logo_menu.png");
+        s_oSpriteLibrary.addSprite("background_sol", "./sprites/Background_sol.png");
+        s_oSpriteLibrary.addSprite("back_sol_logo", "./sprites/Solana_Biliard_Club.png");
 
         s_oSpriteLibrary.addSprite("bg_game", "./sprites/bg_game-1.jpg");
         s_oSpriteLibrary.addSprite("but_exit", "./sprites/but_exit.png");
-        s_oSpriteLibrary.addSprite("bg_menu", "./sprites/bg_menu-1.jpg");
+        s_oSpriteLibrary.addSprite("bg_menu", "./sprites/bg_menu_sol.png");
         s_oSpriteLibrary.addSprite("audio_icon", "./sprites/audio_icon.png");
         s_oSpriteLibrary.addSprite("logo_ctl", "./sprites/logo_ctl.png");
         s_oSpriteLibrary.addSprite("but_credits", "./sprites/but_credits.png");
@@ -150,11 +152,24 @@ function CMain(oData) {
         s_oSpriteLibrary.addSprite("but_next", "./sprites/but_next.png");
         s_oSpriteLibrary.addSprite("but_continue", "./sprites/but_continue.png");
 
+        s_oSpriteLibrary.addSprite("but_whitecue", "./sprites/but_whitecue.png");
+
         s_oSpriteLibrary.addSprite('but_yes', './sprites/but_yes.png');
         s_oSpriteLibrary.addSprite('but_no', './sprites/but_no.png');
 
         s_oSpriteLibrary.addSprite("vs_man_panel", "./sprites/vs_man_panel-5.png");
-        s_oSpriteLibrary.addSprite("vs_pc_panel", "./sprites/vs_pc_panel.png");
+        s_oSpriteLibrary.addSprite("play1v1", "./sprites/btn_Play1V1.png");
+        s_oSpriteLibrary.addSprite("8ballpool", "./sprites/btn_8BallPool.png");
+        s_oSpriteLibrary.addSprite("tourment", "./sprites/btn_Tournament.png");
+        s_oSpriteLibrary.addSprite("practice", "./sprites/btn_Practice.png");
+        s_oSpriteLibrary.addSprite("2022_sbc", "./sprites/2022_SBC.png");
+
+        s_oSpriteLibrary.addSprite("player1_nft", "./sprites/Player1_NFT.png");
+        s_oSpriteLibrary.addSprite("player2_nft", "./sprites/Player2_NFT.png");
+        s_oSpriteLibrary.addSprite("priceboard", "./sprites/ScoreBoard.png");
+        s_oSpriteLibrary.addSprite("solsymbol", "./sprites/SolSymbol.png");
+
+        //s_oSpriteLibrary.addSprite("pc_panel", "./sprites/pc_panel.png");
 
         s_oSpriteLibrary.addSprite("but_text", "./sprites/but_text.png");
 

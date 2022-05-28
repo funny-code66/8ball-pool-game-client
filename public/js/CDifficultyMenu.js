@@ -40,8 +40,8 @@ function CDifficutlyMenu() {
             _pStartPosLang = { x: _pStartPosExit.x - (oSpriteExit.width / 2) - 10, y: _pStartPosExit.y };
         }
 
-        _oButLang = new CButLang(_pStartPosLang.x, _pStartPosLang.y, NUM_LANGUAGES, s_iCurLang, oSpriteLang, s_oStage);
-        _oButLang.addEventListener(ON_SELECT_LANG, this._onChangeLang, this);
+        // _oButLang = new CButLang(_pStartPosLang.x, _pStartPosLang.y, NUM_LANGUAGES, s_iCurLang, oSpriteLang, s_oStage);
+        // _oButLang.addEventListener(ON_SELECT_LANG, this._onChangeLang, this);
 
         var doc = window.document;
         var docEl = doc.documentElement;
@@ -165,7 +165,7 @@ function CDifficutlyMenu() {
             _oButFullscreen.unload();
         }
 
-        _oButLang.unload();
+        //_oButLang.unload();
         _oFade.removeAllEventListeners();
         s_oStage.removeAllChildren();
         s_oDifficultyMenu = null;
@@ -179,7 +179,7 @@ function CDifficutlyMenu() {
         if (_fRequestFullScreen && screenfull.isEnabled) {
             _oButFullscreen.setPosition(_pStartPosFullscreen.x + s_iOffsetX, _pStartPosFullscreen.y + s_iOffsetY);
         }
-        _oButLang.setPosition(_pStartPosLang.x - s_iOffsetX, _pStartPosLang.y + s_iOffsetY);
+        // _oButLang.setPosition(_pStartPosLang.x - s_iOffsetX, _pStartPosLang.y + s_iOffsetY);
 
         _oButExit.setPosition(_pStartPosExit.x - s_iOffsetX, _pStartPosExit.y + s_iOffsetY);
     };

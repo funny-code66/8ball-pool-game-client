@@ -1,0 +1,85 @@
+.createroomform_container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  z-index: 10;
+}
+
+.createroomform_card {
+  width: 440px;
+  height: 475px;
+  top: 50%;
+  left:  50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border: none;
+  border-radius: 16px;
+  background-color: #222639;
+}
+
+.createroomform_card .card_container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.createroomform_card .header_text {
+  font-size: 24px;
+  color: #eee;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.createroomform_card .back_btn {
+  top: 6px;
+  left: 50px;
+  position: absolute;
+  color: #FFF;
+}
+
+.createroomform_card .back_btn:hover {
+  cursor: pointer;
+}
+
+.createroomform_card .createroom_form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.createroom_form>input{
+  width: 100%;
+  height: 28px;
+}
+
+
+.createroom_btn {
+  width: 70%;
+  height: 42px;
+  text-decoration: none;
+  background-color: rgba(66, 234, 203, 0.08);
+  border: 1px solid #42eacb;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  min-width: 64px;
+  padding: 5px 15px;
+  border-radius: 4px;
+
+  color: #42eacb;
+}
+
+.createroom_btn:hover {
+  cursor: pointer;
+}

@@ -16,6 +16,7 @@ function CGame() {
     var _oContainerTable;
     var _oContainerInterface;
     var _iScore;
+    var _oPriceBoard;
 
     var _oInteractiveHelp;
 
@@ -77,6 +78,35 @@ function CGame() {
         var iY = 40;
 
         _oScoreGUI = null;
+
+
+        //by mars
+
+        var oSpritePlayer1_NFT = s_oSpriteLibrary.getSprite("player1_nft");
+        _oPlayer1_NFT = createBitmap(oSpritePlayer1_NFT);
+        _oPlayer1_NFT.x = CANVAS_WIDTH / 2 - 100;
+        _oPlayer1_NFT.y = 70;
+        s_oStage.addChild(_oPlayer1_NFT);
+
+        var oSpritePlayer2_NFT = s_oSpriteLibrary.getSprite("player2_nft");
+        _oPlayer2_NFT = createBitmap(oSpritePlayer2_NFT);
+        _oPlayer2_NFT.x = CANVAS_WIDTH / 2 + 75;
+        _oPlayer2_NFT.y = 70;
+        s_oStage.addChild(_oPlayer2_NFT);
+
+        // var oSpritePriceBoard = s_oSpriteLibrary.getSprite("priceboard");
+        // _oPriceBoard = createBitmap(oSpritePriceBoard);
+        // _oPriceBoard.x = CANVAS_WIDTH / 2 - 25;
+        // _oPriceBoard.y = 70;
+        // s_oStage.addChild(_oPriceBoard);
+
+        // var oSpriteSolSymbol = s_oSpriteLibrary.getSprite("solsymbol");
+        // _oSolSymbol = createBitmap(oSpriteSolSymbol);
+        // _oSolSymbol.x = CANVAS_WIDTH / 2 - 18;
+        // _oSolSymbol.y = 85;
+        // s_oStage.addChild(_oSolSymbol);
+
+        _oPriceBoard = new CPriceBoard(CANVAS_WIDTH / 2 - 25, 60, "1", s_oStage);
 
         _oPlayer1 = new CPlayerGUI(CANVAS_WIDTH / 2 - 400, iY, TEXT_PLAYER1, s_oStage);
         _oPlayer2 = new CPlayerGUI(CANVAS_WIDTH / 2 + 400, iY, TEXT_PLAYER2, s_oStage);
@@ -224,6 +254,7 @@ function CGame() {
 
         if (s_oTable.startStickAnimation()) {
             _oShotPowerBar.setInput(false);
+            // _oShotPowerBar.setInput(true);
         }
     };
 

@@ -1,0 +1,69 @@
+.createroom_container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  z-index: 10;
+}
+
+.createroom_card {
+  width: 360px;
+  height: 380px;
+  top: 50%;
+  left:  50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border: none;
+  border-radius: 16px;
+  background-color: #222639;
+}
+
+.createroom_card .card_container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.createroom_card .header_text {
+  font-size: 24px;
+  color: #eee;
+  text-align: center;
+}
+
+.createroom_card .btn_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.createroom_btn {
+  width: 70%;
+  height: 42px;
+  text-decoration: none;
+  background-color: rgba(66, 234, 203, 0.08);
+  border: 1px solid #42eacb;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  min-width: 64px;
+  padding: 5px 15px;
+  border-radius: 4px;
+
+  color: #42eacb;
+}
+
+.createroom_btn:hover {
+  cursor: pointer;
+}

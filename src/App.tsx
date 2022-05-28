@@ -15,7 +15,7 @@ import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react
 import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
 import { ToastProvider } from 'react-toast-notifications'
 
-import Home from './pages/Home';
+import Main from './pages/Main';
 require('@solana/wallet-adapter-react-ui/styles.css');
 
 Modal.setAppElement('#root');
@@ -30,18 +30,18 @@ const AppWithProvider = () => {
   );
   return (
     <ConnectionProvider endpoint={devnet}>
-        <WalletProvider wallets={wallets} autoConnect={false}>
-          <WalletModalProvider>
-            <ToastProvider>
-              <BrowserRouter>
-                <Routes>
-                  <Route path='/' element={<Home />} />
-                </Routes>
-              </BrowserRouter>
-            </ToastProvider>
-          </WalletModalProvider>
-        </WalletProvider>
-        </ConnectionProvider>
+      <WalletProvider wallets={wallets} autoConnect={false}>
+        <WalletModalProvider>
+          <ToastProvider>
+            <BrowserRouter>
+              <Routes>
+                <Route path='/' element={<Main />} />
+              </Routes>
+            </BrowserRouter>
+          </ToastProvider>
+        </WalletModalProvider>
+      </WalletProvider>
+    </ConnectionProvider>
   )
 }
 export default AppWithProvider;

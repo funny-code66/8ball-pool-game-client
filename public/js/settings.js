@@ -152,13 +152,22 @@ var HOLE_POINT_TO_DETECT = [ // ID POINTS OF EDGE WHERE CLOSEST TO EDGE HOLE
 ];
 
 var HOLE_CENTER_POS = [
-    { x: 95, y: 85 },
-    { x: 640, y: 72 },
-    { x: 1185, y: 88 },
-    { x: 1185, y: 628 },
-    { x: 640, y: 639 },
-    { x: 95, y: 628 }
+    { x: 91, y: 79 },
+    { x: 640, y: 65 },
+    { x: 1189, y: 84 },
+    { x: 1189, y: 632 },
+    { x: 640, y: 646 },
+    { x: 91, y: 632 }
 ];
+
+// var HOLE_CENTER_POS = [
+//     { x: 95, y: 85 },
+//     { x: 640, y: 72 },
+//     { x: 1185, y: 88 },
+//     { x: 1185, y: 628 },
+//     { x: 640, y: 639 },
+//     { x: 95, y: 628 }
+// ];
 
 var HOLE_CPU_POINTS = [
     { x: 105, y: 97 },

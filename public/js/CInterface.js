@@ -14,6 +14,7 @@ function CInterface(oParentContainer) {
     var _fCancelFullScreen = null;
     var _oGUIExpandible;
     var _oBallSpinGUI;
+    var _oButCue;
 
     this._init = function (oParentContainer) {
 
@@ -26,6 +27,11 @@ function CInterface(oParentContainer) {
         _oButExit = new CGfxButton(_pStartPosExit.x, _pStartPosExit.y, oSprite, _oContainer);
         _oButExit.addEventListener(ON_MOUSE_UP, this._onExit, this);
 
+        var oSprite = s_oSpriteLibrary.getSprite('but_whitecue');
+        _pStartPosExit = { x: CANVAS_WIDTH - (oSprite.width / 2) - 10, y: (oSprite.height / 2) + 10 };
+        _oButCue = new CGfxButton(_pStartPosExit.x, _pStartPosExit.y, oSprite, _oContainer);
+        //_oButCue.addEventListener(ON_MOUSE_UP, this._onCuescreen, this);
+
         if (DISABLE_SOUND_MOBILE === false || s_bMobile === false) {
             _pStartPosAudio = { x: _pStartPosExit.x - oSprite.width, y: _pStartPosExit.y };
             var oSprite = s_oSpriteLibrary.getSprite('audio_icon');
@@ -36,6 +42,7 @@ function CInterface(oParentContainer) {
         } else {
             _pStartPosFullscreen = { x: _pStartPosExit.x - oSprite.width, y: _pStartPosExit.y }
         }
+
 
         var doc = window.document;
         var docEl = doc.documentElement;
@@ -57,6 +64,8 @@ function CInterface(oParentContainer) {
         var oSprite = s_oSpriteLibrary.getSprite('but_settings');
         _oGUIExpandible = new CGUIExpandible(_pStartPosExit.x, _pStartPosExit.y, oSprite, _oContainer);
         _oGUIExpandible.addButton(_oButExit);
+        _oGUIExpandible.addButton(_oButCue);
+
 
         if (DISABLE_SOUND_MOBILE === false || s_bMobile === false) {
             _oGUIExpandible.addButton(_oAudioToggle);
