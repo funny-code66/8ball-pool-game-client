@@ -47,7 +47,7 @@ function CMenu() {
         _tournament = new CGfxButton(1175, _pStartPosButTwo.y, s_oSpriteLibrary.getSprite('tourment'), s_oStage);
         //_oButPlayTwo.addEventListener(ON_MOUSE_UP, this._onButPlayTwo, this);
         _practice = new CGfxButton(1604, _pStartPosButTwo.y, s_oSpriteLibrary.getSprite('practice'), s_oStage);
-        _practice.addEventListener(ON_MOUSE_UP, this._onButPlaySingle, this);
+        //_practice.addEventListener(ON_MOUSE_UP, this._onButPlaySingle, this);
 
 
 
