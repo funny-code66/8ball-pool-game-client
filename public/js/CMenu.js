@@ -34,7 +34,7 @@ function CMenu() {
         // _oButPlaySingle = new CGfxButton(_pStartPosButSingle.x, _pStartPosButSingle.y, s_oSpriteLibrary.getSprite('vs_pc_panel'), s_oStage);
         // _oButPlaySingle.addEventListener(ON_MOUSE_UP, this._onButPlaySingle, this);
 
-        _pStartPosButTwo = { x: (CANVAS_WIDTH / 2), y: CANVAS_HEIGHT - 170 };
+        _pStartPosButTwo = { x: (CANVAS_WIDTH / 2), y: CANVAS_HEIGHT - 250 };
 
         // _oButPlayTwo = new CGfxButton(_pStartPosButTwo.x, _pStartPosButTwo.y, s_oSpriteLibrary.getSprite('vs_man_panel'), s_oStage);
         // _oButPlayTwo.addEventListener(ON_MOUSE_UP, this._onButPlayTwo, this);
@@ -108,13 +108,13 @@ function CMenu() {
         var oSpriteBack_Sol_logo = s_oSpriteLibrary.getSprite("back_sol_logo");
         _oLogo_Back_sol_logo = createBitmap(oSpriteBack_Sol_logo);
         _oLogo_Back_sol_logo.x = CANVAS_WIDTH / 2 - 223;
-        _oLogo_Back_sol_logo.y = 78;
+        _oLogo_Back_sol_logo.y = CANVAS_HEIGHT / 20 + 50;
         s_oStage.addChild(_oLogo_Back_sol_logo);
 
         var oSprite_sbc = s_oSpriteLibrary.getSprite("2022_sbc");
         _oSBC = createBitmap(oSprite_sbc);
         _oSBC.x = CANVAS_WIDTH / 2 - 42;
-        _oSBC.y = 1019;
+        _oSBC.y = CANVAS_HEIGHT - 120;
         s_oStage.addChild(_oSBC);
 
         if (!s_oLocalStorage.isUsed()) {

@@ -1,15 +1,21 @@
 import './App.css';
 
 import React, { useMemo } from 'react';
-import Modal  from 'react-modal';
+import Modal from 'react-modal';
 import {
   BrowserRouter,
   Routes,
-  Route, 
+  Route,
 } from 'react-router-dom';
 
 import {
+  getLedgerWallet,
   getPhantomWallet,
+  getSlopeWallet,
+  getSolflareWallet,
+  getSolletWallet,
+  getSolletExtensionWallet,
+  getTorusWallet,
 } from "@solana/wallet-adapter-wallets";
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
 import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
@@ -25,7 +31,11 @@ const devnet = 'https://api.devnet.solana.com';
 
 const AppWithProvider = () => {
   const wallets = useMemo(
-    () => [getPhantomWallet()],
+    () => [
+      getPhantomWallet(),
+      getSolflareWallet(),
+      getSlopeWallet(),
+    ],
     []
   );
   return (
