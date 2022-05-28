@@ -205,10 +205,10 @@ function CMenu() {
     };
 
     this._onButPlayTwo = function () {
-        // if (!window.dragon.walletConnected) {
-        //     alert("Please connect wallet.")
-        //     return
-        // }
+        if (!window.dragon.walletConnected) {
+            alert("Please connect wallet.")
+            return
+        }
         s_iPlayerMode = GAME_MODE_TWO;
         s_iGameMode = GAME_MODE_EIGHT;
 

@@ -84,14 +84,14 @@ function CGame() {
 
         var oSpritePlayer1_NFT = s_oSpriteLibrary.getSprite("player1_nft");
         _oPlayer1_NFT = createBitmap(oSpritePlayer1_NFT);
-        _oPlayer1_NFT.x = CANVAS_WIDTH / 2 - 245;
-        _oPlayer1_NFT.y = 70;
+        _oPlayer1_NFT.x = CANVAS_WIDTH / 2 - 225;
+        _oPlayer1_NFT.y = 90;
         s_oStage.addChild(_oPlayer1_NFT);
 
         var oSpritePlayer2_NFT = s_oSpriteLibrary.getSprite("player2_nft");
         _oPlayer2_NFT = createBitmap(oSpritePlayer2_NFT);
-        _oPlayer2_NFT.x = CANVAS_WIDTH / 2 + 200;
-        _oPlayer2_NFT.y = 70;
+        _oPlayer2_NFT.x = CANVAS_WIDTH / 2 + 180;
+        _oPlayer2_NFT.y = 90;
         s_oStage.addChild(_oPlayer2_NFT);
 
         // var oSpritePriceBoard = s_oSpriteLibrary.getSprite("priceboard");
@@ -106,7 +106,7 @@ function CGame() {
         // _oSolSymbol.y = 85;
         // s_oStage.addChild(_oSolSymbol);
 
-        _oPriceBoard = new CPriceBoard(CANVAS_WIDTH / 2 - 30, 70, "1", s_oStage);
+        _oPriceBoard = new CPriceBoard(CANVAS_WIDTH / 2 - 30, 90, "1", s_oStage);
 
         _oPlayer1 = new CPlayerGUI(CANVAS_WIDTH / 2 - 400, iY, TEXT_PLAYER1, s_oStage);
         _oPlayer2 = new CPlayerGUI(CANVAS_WIDTH / 2 + 400, iY, TEXT_PLAYER2, s_oStage);
