@@ -43,6 +43,7 @@ function CMenu() {
         _play1V1 = new CGfxButton(317, _pStartPosButTwo.y, s_oSpriteLibrary.getSprite('play1v1'), s_oStage);
         _play1V1.addEventListener(ON_MOUSE_UP, this._onButPlayTwo, this);
         _8ballPool = new CGfxButton(746, _pStartPosButTwo.y, s_oSpriteLibrary.getSprite('8ballpool'), s_oStage);
+        _8ballPool.addEventListener(ON_MOUSE_UP, this._onBut8ballPool, this)
         //_oButPlayTwo.addEventListener(ON_MOUSE_UP, this._onButPlayTwo, this);
         _tournament = new CGfxButton(1175, _pStartPosButTwo.y, s_oSpriteLibrary.getSprite('tourment'), s_oStage);
         //_oButPlayTwo.addEventListener(ON_MOUSE_UP, this._onButPlayTwo, this);
@@ -129,9 +130,6 @@ function CMenu() {
 
         createjs.Tween.get(_oFade)
             .to({ alpha: 0 }, 1000, createjs.Ease.cubicOut);
-
-
-
         $("#canvas_upper_3d").css("pointer-events", "none");
         sizeHandler();
     };
@@ -195,6 +193,7 @@ function CMenu() {
     };
 
     this._onButPlaySingle = function () {
+        window.alert("button play single")
         s_iPlayerMode = GAME_MODE_CPU;
         s_iGameMode = GAME_MODE_EIGHT;
 
@@ -205,21 +204,39 @@ function CMenu() {
     };
 
     this._onButPlayTwo = function () {
-        if (!window.dragon.walletConnected) {
-            alert("Please connect wallet.")
-            return
-        }
+        window.alert("button play two")
+        // if (!window.dragon.walletConnected) {
+        //     alert("Please connect wallet.")
+        //     return
+        // }
         s_iPlayerMode = GAME_MODE_TWO;
         s_iGameMode = GAME_MODE_EIGHT;
 
         window.dragon.isPlaying(true)
-
 
         this._onExit(function () {
             s_oMenu.unload();
             s_oMain.gotoGame();
             $(s_oMain).trigger("start_session");
         });
+    };
+
+    this._onBut8ballPool = function () {
+        window.alert("button 8 ball pool")
+        //window.dragon.clickEightBallPool()
+        s_iPlayerMode = GAME_MODE_MULTI;
+        s_iGameMode = GAME_MODE_EIGHT;
+        window.dragon.isPlaying(true);
+
+        this._onExit(function () {
+            s_oMenu.unload();
+            s_oMain.gotoWatingRoom();
+        });
+        // this._onExit(function () {
+        //     s_oMenu.unload();
+        //     s_oMain.gotoGame();
+        //     $(s_oMain).trigger("start_session");
+        // });
     };
 
     this._onChangeLang = function (iLang) {

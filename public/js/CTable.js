@@ -288,6 +288,7 @@ if (iForce > 10) {
 
 	//listener called when ball is potted
 	this._onBallInHole = function (oBall) {
+		console.log("ball in hole")
 		if (s_iGameMode == GAME_MODE_TIME) {
 			if (oBall.getNumber() != 0) {
 				if (oBall.getNumber() == 9) {
@@ -1520,7 +1521,9 @@ if (iForce > 10) {
 	this.isCpuTurn = function () {
 		return (s_iPlayerMode === GAME_MODE_CPU && s_oGame.getCurTurn() === 2);
 	};
-
+	this.isOpenentTurn = function () {
+		return (s_iPlayerMode === GAME_MODE_MULTI && s_oGame.getCurTurn() === 2);
+	};
 	this.targetting = function (bValue) {
 		//m_bTargetting = bValue;
 		_oStick.setVisible(bValue);

@@ -3,7 +3,7 @@ import {
 } from '../constants/actionTypes/common'
 
 const INITIAL_STATE = {
-  page: 'home',
+  page: '',
 }
 
 const reducer = (state = INITIAL_STATE, action) => {

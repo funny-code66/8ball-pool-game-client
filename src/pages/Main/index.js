@@ -14,26 +14,31 @@ import './index.css';
 import CreateRoom from "../../components/CreateRoom";
 import JoinRoom from "../../components/JoinRoom";
 import CreateRoomForm from "../../components/CreateRoomForm";
+import { changePage } from "../../actions/common";
 
 const Main = () => {
   const common = useSelector(state => state.common)
-
+  const dispatch = useDispatch();
   const walletState = useWallet();
 
   const [isResourceLoaded, setIsResourceLoaded] = useState(false)
   const [isShow, setIsShow] = useState(false)
 
 
-  window.dragon.resourceLoaded = function() {
+  window.dragon.resourceLoaded = function () {
     setIsResourceLoaded(true)
   }
 
-  window.dragon.isPlaying = function(state) {
+  window.dragon.isPlaying = function (state) {
     setIsShow(state)
   }
-  
+
+  window.dragon.clickEightBallPool = function () {
+    dispatch(changePage('CreateRoom'));
+  }
+
   useEffect(() => {
-    if(walletState.connected || walletState.autoConnect) {
+    if (walletState.connected || walletState.autoConnect) {
       window.dragon.walletConnected = true
       console.log("wallet address=", walletState.publicKey)
     }
@@ -42,12 +47,15 @@ const Main = () => {
   return (
     <>
       {/* {common.page === 'home' && <Home />} */}
-      {/* <CreateRoomForm /> */}
+
+      {common.page === 'CreateRoom' && <CreateRoom />}
+      {common.page === 'JoinRoom' && <JoinRoom />}
+      {common.page === 'CreateRoomForm' && <CreateRoomForm />}
       <div className={isResourceLoaded ? `main show` : `main hide`}>
         <div className="container">
-        {
-          !isShow && <WalletMultiButton className='wallet-btn' />
-        }
+          {
+            !isShow && <WalletMultiButton className='wallet-btn' />
+          }
         </div>
       </div>
     </>

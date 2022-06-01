@@ -2,8 +2,11 @@ import React, { useState, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 
 import './CreateRoom.css';
+import { changePage } from "../../actions/common";
 
 const CreateRoom = () => {
+  const dispatch = useDispatch()
+
   const common = useSelector(state => state.common)
 
   return (
@@ -12,7 +15,7 @@ const CreateRoom = () => {
         <div className="card_container">
           <h1 className="header_text">Welcome to BallPool</h1>
           <div className="btn_container">
-            <div className="createroom_btn">
+            <div className="createroom_btn" onClick={() => dispatch(changePage('JoinRoom'))}>
               CREATE/FIND CUSTOM ROOMS
             </div>
           </div>

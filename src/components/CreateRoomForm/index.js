@@ -4,10 +4,10 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import TextField from '@mui/material/TextField';
 
 import './CreateRoomForm.css';
-
+import { changePage } from '../../actions/common'
 const CreateRoomForm = () => {
   const common = useSelector(state => state.common)
-
+  const dispatch = useDispatch()
   const [values, setValues] = useState({
     name: '',
     description: '',
@@ -44,11 +44,11 @@ const CreateRoomForm = () => {
       <div className="createroomform_card">
         <div className="card_container">
           <h1 className="header_text">Create Custom Room</h1>
-          <div className="back_btn"><ArrowBackIcon/></div>
+          <div className="back_btn" onClick={() => dispatch(changePage('JoinRoom'))}><ArrowBackIcon /></div>
           <div className="createroom_form">
-            <input type='text' value={values.name} onChange={() => handleChange('name')}/>
-            <input type='text' value={values.description} onChange={() => handleChange('description')}/>
-            <input type='password' value={values.password} onChange={() => handleChange('password')}/>
+            <input type='text' value={values.name} onChange={() => handleChange('name')} />
+            <input type='text' value={values.description} onChange={() => handleChange('description')} />
+            <input type='password' value={values.password} onChange={() => handleChange('password')} />
             <button onClick={() => handleSubmit()}>Create</button>
           </div>
         </div>

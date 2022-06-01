@@ -468,7 +468,7 @@ function CGame() {
 
     this.restartGame = function () {
         _oScenario.update();
-        this.unload(s_oMain.gotoGame, s_oMain);
+        this.unload(s_oMain.gotoMultiGame, s_oMain);
 
         $(s_oMain).trigger("show_interlevel_ad");
         $(s_oMain).trigger("end_session");

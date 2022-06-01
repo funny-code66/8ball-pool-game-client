@@ -9,6 +9,7 @@ function CMain(oData) {
     var _oMenu;
     var _oDifficultyMenu;
     var _oGame;
+    var _oWaitingRoom;
 
     this.initContainer = function () {
         var canvas = document.getElementById("canvas_game");
@@ -256,8 +257,19 @@ function CMain(oData) {
         _iState = STATE_MENU;
     };
 
+    this.gotoWatingRoom = function () {
+        _oWaitingRoom = new CWaitingRoom();
+        _iState = STATE_MENU;
+    };
+
+
     this.gotoGame = function () {
         _oGame = new CGame();
+
+        _iState = STATE_GAME;
+    };
+    this.gotoMultiGame = function () {
+        _oGame = new CMultiGame();
 
         _iState = STATE_GAME;
     };
@@ -353,7 +365,7 @@ function CMain(oData) {
 
     var iLang = navigator.language.split("-")[0];
     s_iCurLang = LANG_CODES[iLang];
-    console.log("LANG_CODES[" + navigator.language + "] " + s_iCurLang);
+    //console.log("LANG_CODES[" + navigator.language + "] " + s_iCurLang);
     refreshLanguage();
 
     this.initContainer();
