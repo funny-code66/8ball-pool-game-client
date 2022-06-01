@@ -1,4 +1,4 @@
-function CGame() {
+function CMultiGame() {
     var _bUpdate = false;
     var _bSuitAssigned;
     var _iCurTurn;                //Current Turn in game 
@@ -30,7 +30,9 @@ function CGame() {
     var _iDirStickSpeedCommand;
 
     this._init = function () {
-        _iCurTurn = 1;
+        console.log("creator:", s_oState.creator)
+        console.log("me:", s_sSessionId)
+        _iCurTurn = (s_sSessionId == s_oState.creator) ? 1 : 2;
         _iWinStreak = 0;
         _bSuitAssigned = false;
         _bHoldStickCommand = false;
@@ -111,6 +113,7 @@ function CGame() {
             _oPlayer1.highlight();
             _oPlayer2.unlight();
         } else {
+            console.log("_iCurturn", _iCurTurn)
             _oPlayer2.highlight();
             _oPlayer1.unlight();
         }

@@ -396,3 +396,5 @@ var s_iGameMode = GAME_MODE_EIGHT;
 var s_iPlayerMode = GAME_MODE_CPU;
 var s_iCurLang = LANG_EN;
 var s_iGameDifficulty = EASY;
+var s_oState;
+var s_sSessionId;

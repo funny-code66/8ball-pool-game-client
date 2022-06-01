@@ -86,22 +86,26 @@ function CWaitingRoom() {
     };
 
     this.connect = async function () {
+        console.log("connect to server")
         var client = new Colyseus.Client('ws://localhost:3555');
         this.room = await client.joinOrCreate('ballpool');
+        console.log("client.sessionId", this.room.sessionId)
+        s_sSessionId = this.room.sessionId;
         console.log("async connect" + " waiting");
         let numPlayers = 0;
         this.room.state.players.onAdd = () => {
             numPlayers++;
-
+            
             if (numPlayers === 2) {
                 this.onJoin();
             }
         }
-
+        
 
         this.room.state.listen("currentTurn", (sessionId) => {
+
             // go to next turn after a little delay, to ensure "onJoin" gets called before this.
-            setTimeout(() => this.nextTurn(sessionId), 10);
+            // setTimeout(() => this.nextTurn(sessionId), 10);
         });
 
         this.room.state.listen("draw", () => this.drawGame());
@@ -112,13 +116,14 @@ function CWaitingRoom() {
         }
 
         this.room.onError.once(() => this._onStartMulti());
-
+        
+        s_oState = this.room.state;
 
     }
     this._onStartMulti = function () {
         this._onExit(function () {
             s_WaitingRoom.unload();
-            s_oMain.gotoGame();
+            s_oMain.gotoMultiGame();
             $(s_oMain).trigger("start_session");
         });
     };
