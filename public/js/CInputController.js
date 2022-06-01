@@ -62,6 +62,8 @@ function CInputController(oParentContainer) {
     };
 
     this._onClick = function (evt, iEvent) {
+        console.log("_onClick")
+        // if (!s_oGame.isMyTurn()) return;
         if (!_bInput) {
             return;
         }
@@ -69,6 +71,8 @@ function CInputController(oParentContainer) {
     };
 
     function onKeyDown(evt) {
+        console.log("onKeyDown")
+        // if (!s_oGame.isMyTurn()) return;
         if (!evt) {
             evt = window.event;
         }
@@ -92,6 +96,8 @@ function CInputController(oParentContainer) {
     }
 
     function onKeyUp(evt) {
+        console.log("onKeyUp")
+        // if (!s_oGame.isMyTurn()) return;
         if (!evt) {
             evt = window.event;
         }
@@ -126,6 +132,8 @@ function CInputController(oParentContainer) {
     };
 
     this.triggerEvent = function (iEvent) {
+        console.log("triggerEvent")
+        // if (!s_oGame.isMyTurn()) return;
 
         if (_aCbCompleted[iEvent]) {
             _aCbCompleted[iEvent].call(_aCbOwner[iEvent], _aParams[iEvent]);

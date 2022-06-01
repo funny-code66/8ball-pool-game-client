@@ -547,18 +547,24 @@ if (iForce > 10) {
 	};
 
 	this.hitBall = function () {
+		console.log("hitBall")
+		// if (!s_oGame.isMyTurn()) return;
 		_iPowerShot *= 0.2;
 		_vStickDirection.scalarProduct(_iPowerShot);
 		_oCueBall.addForce(_vStickDirection);
 	};
 
 	this.startToShot = function () {
+		console.log("startToShot")
+		// if (!s_oGame.isMyTurn()) return;
 		_oHandCueBallDrag.hide();
 		_iState = STATE_TABLE_MOVE_STICK;
 		_bHoldStick = true;
 	};
 
 	this._onPressHitArea = function (e) {
+		console.log("_onPressHitArea")
+		// if (!s_oGame.isMyTurn()) return;
 		if (!_oCueBall.isBallOnTable()
 			|| (s_iPlayerMode === GAME_MODE_CPU) && (s_oGame.getCurTurn() === 2)
 			|| !_oPhysicsController.areBallsStopped()
@@ -590,6 +596,8 @@ if (iForce > 10) {
 	};
 
 	this._onPressMoveHitArea = function (e) {
+		console.log("_onPressMoveHitArea")
+		// if (!s_oGame.isMyTurn()) return;
 		var vLocalPos = _oContainer.globalToLocal(e.stageX, e.stageY);
 		var fNewAngle = radiantsToDegrees(Math.atan2(
 			_oCueBall.getPos().getY() - vLocalPos.y,
@@ -608,14 +616,18 @@ if (iForce > 10) {
 		_fPrevStickAngle = fNewAngle;
 	};
 
-	this.startStickAnimation = function () {
-		return s_oTable._moveStick();
+	this.startStickAnimation = async function () {
+		console.log("startStickAnimation")
+		// if (!s_oGame.isMyTurn()) return false;
+		return await s_oTable._moveStick();
 	};
 
 	this._moveStick = function (oMousePos, vStartPos) {
+		console.log("_moveStick")
 		_bHoldStick = false;
-
+		
 		var bToShot = _iPowerShot >= MIN_POWER_SHOT;
+		// if (!s_oGame.isMyTurn()) return bToShot;
 
 		if (bToShot) {
 			_bBreakShot = false;
@@ -634,12 +646,14 @@ if (iForce > 10) {
 
 
 	this._onReleaseHitArea = function () {
+		console.log("_onReleaseHitArea")
 		_oHitAreaShot.off("pressmove", _oListenerMove);
 		_oHitAreaShot.off("pressup", _oListenerRelease);
-
+		
 		if (s_bMobile) {
 			return;
 		}
+		// if (!s_oGame.isMyTurn()) return;
 
 		switch (_iState) {
 			case STATE_TABLE_MOVE_STICK: {
@@ -651,6 +665,8 @@ if (iForce > 10) {
 	};
 
 	this._onPressDownCueBall = function (oEvent) {
+		console.log("_onPressDownCueBall")
+		// if (!s_oGame.isMyTurn()) return;
 		if ((s_iPlayerMode === GAME_MODE_CPU) && (s_oGame.getCurTurn() === 2)
 			|| (_iState !== STATE_TABLE_PLACE_CUE_BALL_BREAKSHOT && _iState !== STATE_TABLE_PLACE_CUE_BALL)) {
 			return;
@@ -665,6 +681,8 @@ if (iForce > 10) {
 	};
 
 	this._onPressMoveCueBall = function (oEvt) {
+		console.log("_onPressMoveCueBall")
+		// if (!s_oGame.isMyTurn()) return;
 		var oPos = { x: oEvt.stageX, y: oEvt.stageY };
 		this._moveCueBall(oPos);
 		this.updateStick();
@@ -682,6 +700,8 @@ if (iForce > 10) {
 	};
 
 	this._onPressUpCueBall = function () {
+		console.log("_onPressUpCueBall")
+		// if (!s_oGame.isMyTurn()) return;
 		_oCueBall.removeEventListener(ON_PRESS_MOVE_BALL);
 		_oCueBall.removeEventListener(ON_PRESS_UP_BALL);
 		this._placeCueBall();

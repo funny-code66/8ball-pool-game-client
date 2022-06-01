@@ -29,10 +29,42 @@ function CMultiGame() {
     var _iDirStickCommand;
     var _iDirStickSpeedCommand;
 
-    this._init = function () {
+    this._init = async function () {
         console.log("creator:", s_oState.creator)
         console.log("me:", s_sSessionId)
-        _iCurTurn = (s_sSessionId == s_oState.creator) ? 1 : 2;
+        _iCurTurn = 1;
+        s_oState.listen("currentTurn", async (sessionId) => {
+            console.log("server player turned into", sessionId)
+            s_sCurrentSessionId = sessionId
+            // go to next turn after a little delay, to ensure "onJoin" gets called before this.
+            // setTimeout(() => this.nextTurn(sessionId), 10);
+            if (_iCurTurn === 1) {
+                _iCurTurn = 2;
+
+                if (!s_oTable.isCpuTurn()) {
+                    s_oGame.showShotBar();
+                }
+
+                _oPlayer2.highlight();
+                _oPlayer1.unlight();
+            } else {
+                _iCurTurn = 1;
+                _oPlayer1.highlight();
+                _oPlayer2.unlight();
+                s_oGame.showShotBar();
+            }
+            s_oInterface.resetSpin();
+
+            // if (bFault) {
+            //     new CEffectText(TEXT_FAULT, s_oStageUpper3D);
+            // } else {
+            //     new CEffectText(TEXT_CHANGE_TURN, s_oStageUpper3D);
+            // }
+            var isMyTurn = await s_oGame.isMyTurn();
+            console.log("isMyTurn", isMyTurn)
+            if (!isMyTurn) window.document.getElementById('disable_panel').style.display = 'block';
+            else window.document.getElementById('disable_panel').style.display = 'none';
+        });
         _iWinStreak = 0;
         _bSuitAssigned = false;
         _bHoldStickCommand = false;
@@ -236,18 +268,21 @@ function CMultiGame() {
     };
 
     this._onMouseDownPowerBar = function () {
-
+        console.log("_onPressDownStickCommand")
+        // if (!s_oGame.isMyTurn()) return;
         s_oTable.startToShot();
     };
 
     this._onPressMovePowerBar = function (iOffset) {
-
+        console.log("_onPressMovePowerBar")
+        // if (!s_oGame.isMyTurn()) return;
 
         s_oTable.holdShotStickMovement(iOffset);
     };
 
     this._onPressUpPowerBar = function () {
-
+        console.log("_onPressUpPowerBar")
+        // if (!s_oGame.isMyTurn()) return;
         if (s_oTable.startStickAnimation()) {
             _oShotPowerBar.setInput(false);
             // _oShotPowerBar.setInput(true);
@@ -286,12 +321,16 @@ function CMultiGame() {
     };
 
     this._onPressDownStickCommand = function (iDir) {
+        console.log("_onPressDownStickCommand")
+        // if (!s_oGame.isMyTurn()) return;
         _iDirStickCommand = iDir;
         _bHoldStickCommand = true;
         _iDirStickSpeedCommand = COMMAND_STICK_START_SPEED;
     };
 
     this._onPressUpStickCommand = function () {
+        console.log("_onPressUpStickCommand")
+        // if (!s_oGame.isMyTurn()) return;
         _bHoldStickCommand = false;
     };
 
@@ -354,22 +393,25 @@ function CMultiGame() {
 
     //change player turn
     this.changeTurn = function (bFault) {
-        if (_iCurTurn === 1) {
-            _iCurTurn = 2;
+        s_oRoom.send(("change_turn"))
+        console.log("change_turn")
 
-            if (!s_oTable.isCpuTurn()) {
-                s_oGame.showShotBar();
-            }
+        // if (_iCurTurn === 1) {
+        //     _iCurTurn = 2;
 
-            _oPlayer2.highlight();
-            _oPlayer1.unlight();
-        } else {
-            _iCurTurn = 1;
-            _oPlayer1.highlight();
-            _oPlayer2.unlight();
-            s_oGame.showShotBar();
-        }
-        s_oInterface.resetSpin();
+        //     if (!s_oTable.isCpuTurn()) {
+        //         s_oGame.showShotBar();
+        //     }
+
+        //     _oPlayer2.highlight();
+        //     _oPlayer1.unlight();
+        // } else {
+        //     _iCurTurn = 1;
+        //     _oPlayer1.highlight();
+        //     _oPlayer2.unlight();
+        //     s_oGame.showShotBar();
+        // }
+        // s_oInterface.resetSpin();
 
         if (bFault) {
             new CEffectText(TEXT_FAULT, s_oStageUpper3D);
@@ -513,6 +555,20 @@ function CMultiGame() {
     this.getPlayer2Name = function () {
         return _oPlayer2.getPlayerName();
     };
+
+    this.isMyTurn = async function () {
+        if (s_oRoom.sessionId == s_oState.currentTurn) {
+            console.log("me", s_oRoom.sessionId)
+            console.log("s_oState.currentTurn", s_oState.currentTurn)
+            console.log("My Turn");
+            return true;
+        } else {
+            console.log("me", s_oRoom.sessionId)
+            console.log("s_oState.currentTurn", s_oState.currentTurn)
+            console.log("Not my turn");
+            return false;
+        }
+    }
 
     this._updateInput = function () {
         if (!_bHoldStickCommand) {

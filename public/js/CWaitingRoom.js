@@ -89,6 +89,7 @@ function CWaitingRoom() {
         console.log("connect to server")
         var client = new Colyseus.Client('ws://localhost:3555');
         this.room = await client.joinOrCreate('ballpool');
+        s_oRoom = this.room;
         console.log("client.sessionId", this.room.sessionId)
         s_sSessionId = this.room.sessionId;
         console.log("async connect" + " waiting");
@@ -103,7 +104,8 @@ function CWaitingRoom() {
         
 
         this.room.state.listen("currentTurn", (sessionId) => {
-
+            // console.log("turn player")
+            // s_sCurrentSessionId = sessionId
             // go to next turn after a little delay, to ensure "onJoin" gets called before this.
             // setTimeout(() => this.nextTurn(sessionId), 10);
         });

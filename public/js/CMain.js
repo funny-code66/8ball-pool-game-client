@@ -398,3 +398,4 @@ var s_iCurLang = LANG_EN;
 var s_iGameDifficulty = EASY;
 var s_oState;
 var s_sSessionId;
+var s_oRoom;

@@ -184,6 +184,8 @@ function CShotPowerBar(oParentContainer, iX, iY, oInputContainer = s_oStage) {
     };
 
     this.triggerEvent = function (iEvent) {
+        console.log("triggerEvent in ShotBar")
+		// if (!s_oGame.isMyTurn()) return;
         if (_aCbCompleted[iEvent]) {
             _aCbCompleted[iEvent].call(_aCbOwner[iEvent], _aParams[iEvent]);
         }

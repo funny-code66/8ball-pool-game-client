@@ -222,7 +222,7 @@ function CMenu() {
     };
 
     this._onBut8ballPool = function () {
-        window.alert("button 8 ball pool")
+        // window.alert("button 8 ball pool")
         //window.dragon.clickEightBallPool()
         s_iPlayerMode = GAME_MODE_MULTI;
         s_iGameMode = GAME_MODE_EIGHT;
