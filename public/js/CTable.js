@@ -593,6 +593,7 @@ if (iForce > 10) {
 			_oListenerMove = _oHitAreaShot.on("pressmove", s_oTable._onPressMoveHitArea);
 		}
 		_oListenerRelease = _oHitAreaShot.on("pressup", s_oTable._onReleaseHitArea);
+		s_oRoom.send("change_stick_angle", _fPrevStickAngle.toString())
 	};
 
 	this._onPressMoveHitArea = function (e) {
@@ -614,6 +615,7 @@ if (iForce > 10) {
 
 		s_oTable.rotateStick(-fRotationOffset);
 		_fPrevStickAngle = fNewAngle;
+		s_oRoom.send("change_stick_angle", fNewAngle.toString())
 	};
 
 	this.startStickAnimation = async function () {
