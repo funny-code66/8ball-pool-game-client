@@ -96,12 +96,12 @@ function CWaitingRoom() {
         let numPlayers = 0;
         this.room.state.players.onAdd = () => {
             numPlayers++;
-            
+
             if (numPlayers === 2) {
                 this.onJoin();
             }
         }
-        
+
 
         this.room.state.listen("currentTurn", (sessionId) => {
             // console.log("turn player")
@@ -111,14 +111,14 @@ function CWaitingRoom() {
         });
 
         this.room.state.listen("draw", () => this.drawGame());
-        this.room.state.listen("winner", (sessionId) => this.showWinner(sessionId));
+        //this.room.state.listen("winner", (sessionId) => this.showWinner(sessionId));
 
         this.room.state.onChange = (changes) => {
             console.log("state.onChange =>", changes);
         }
 
         this.room.onError.once(() => this._onStartMulti());
-        
+
         s_oState = this.room.state;
 
     }
@@ -132,8 +132,8 @@ function CWaitingRoom() {
 
     this.onJoin = function () {
         this._onStartMulti();
-        this.countdownInterval = clock.setInterval(this.turnCountdown.bind(this), 1000);
-        this.onResize();
+        //this.countdownInterval = clock.setInterval(this.turnCountdown.bind(this), 1000);
+        //this.onResize();
     }
 
     this._onMouseDownButExit = function () {

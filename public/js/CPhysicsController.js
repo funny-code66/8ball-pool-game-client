@@ -410,7 +410,8 @@ function CPhysicsController(oDebugContainer) {
 		}
 
 		if (oBall.getNumber() === 0) {
-			s_oTable.setFirstBallCollision(aCollisions[0].oBall);
+			if (s_iPlayerMode === GAME_MODE_MULTI) s_oMultiTable.setFirstBallCollision(aCollisions[0].oBall);
+			else s_oTable.setFirstBallCollision(aCollisions[0].oBall);
 		}
 		return true;
 	};

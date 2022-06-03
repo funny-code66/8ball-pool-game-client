@@ -51,6 +51,10 @@ function CBallSpinGUI(iX, iY, oParentContainer) {
         if (((s_iPlayerMode === GAME_MODE_CPU) && (s_oGame.getCurTurn() === 2))) {
             return;
         }
+        console.log("_onrelease in BallSpinGUI");
+        if (((s_iPlayerMode === GAME_MODE_MULTI) && (!isMyTurn))) {
+            return;
+        }
 
         var pPoint = _oBg.globalToLocal(evt.stageX, evt.stageY);
         if (distance(new CVector2(evt.stageX, evt.stageY), _vPos) < _iRadius) {

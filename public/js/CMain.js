@@ -9,6 +9,7 @@ function CMain(oData) {
     var _oMenu;
     var _oDifficultyMenu;
     var _oGame;
+    var _oMultiGame
     var _oWaitingRoom;
 
     this.initContainer = function () {
@@ -269,7 +270,8 @@ function CMain(oData) {
         _iState = STATE_GAME;
     };
     this.gotoMultiGame = function () {
-        _oGame = new CMultiGame();
+        _oMultiGame = new CMultiGame();
+        s_iPlayerMode = GAME_MODE_MULTI;
 
         _iState = STATE_GAME;
     };
@@ -343,7 +345,8 @@ function CMain(oData) {
         }
 
         if (_iState === STATE_GAME && _bGameUpdate) {
-            _oGame.update();
+            if (s_iPlayerMode === GAME_MODE_MULTI) _oMultiGame.update()
+            else _oGame.update();
         }
 
         if (s_oStage !== undefined) {

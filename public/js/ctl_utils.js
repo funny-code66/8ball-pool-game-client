@@ -199,6 +199,9 @@ function sizeHandler() {
     if (s_oGame !== null) {
         s_oGame.refreshButtonPos();
     }
+    if (s_oMultiGame !== null) {
+        s_oMultiGame.refreshButtonPos();
+    }
     if (s_oMenu !== null) {
         s_oMenu.refreshButtonPos();
     }

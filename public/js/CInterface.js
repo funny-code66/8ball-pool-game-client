@@ -124,7 +124,8 @@ function CInterface(oParentContainer) {
     }
 
     this._onExit = function () {
-        s_oGame.onExit();
+        if (s_iPlayerMode === GAME_MODE_MULTI) s_oMultiGame.onExit();
+        else s_oGame.onExit();
     };
 
     this._onAudioToggle = function () {

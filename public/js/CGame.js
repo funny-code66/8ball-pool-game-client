@@ -435,12 +435,12 @@ function CGame() {
 
     this.increaseWinStreak = function () {
         _iWinStreak++;
-        //oWinStreak.text = "Win Streak: "+CAppBiliardo.m_iWinStreak;
+        oWinStreak.text = "Win Streak: " + CAppBiliardo.m_iWinStreak;
     };
 
     this.resetWinStreak = function () {
         _iWinStreak = 0;
-        //oWinStreak.text = "Win Streak: "+_iWinStreak;
+        oWinStreak.text = "Win Streak: " + _iWinStreak;
     };
 
     this.gameOver = function (szText) {
